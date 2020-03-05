@@ -1,0 +1,9 @@
+name: 'Deploy Hugo to Remote'
+description: '🚀 Build and deploy a Hugo site to a remote repository with latest extended Hugo.'
+author: 'victoriadrake'
+branding:
+  icon: 'send'
+  color: 'blue'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
