@@ -24,8 +24,7 @@ if [ -d "${DEST}" ]; then
 fi
 
 echo '🍳 Build site'
-HUGO_ENV=production
-hugo -d ${DEST}
+HUGO_ENV=production hugo -d ${DEST}
 
 echo '🎁 Publish to remote repository'
 cd ${DEST}
