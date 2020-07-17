@@ -28,6 +28,14 @@ This action expects variables for:
 - `DEST`, the name of the destination directory you would like the site to build to,
 - `TOKEN`, in the form `${{ secrets.TOKEN }}` assuming `TOKEN` is the name you've used.
 
+You can optionally set a string value for the variable named `HUGO_ARGS`. Note these should be set on a single line.
+
+- `HUGO_ARGS` in the form 'string' Here are some examples:
+- `HUGO_ARGS: '--minify'`
+- `HUGO_ARGS: '-D -F'`
+  
+If you do not wish to pass any arguments. Please leave HUGO_ARGS blank as `HUGO_ARGS:`
+
 Here is an example workflow file that uses this action on any `push` event to the `master` branch:
 
 ```yml
@@ -55,7 +63,7 @@ jobs:
           fetch-depth: 1
       - name: 🚀 Build and deploy
         env:
-          HUGO_ARGS: '--minify' # Add your Hugo arguments here.
+          HUGO_ARGS:
         uses: victoriadrake/hugo-remote@master
 ```
 
