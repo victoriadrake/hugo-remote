@@ -54,6 +54,8 @@ jobs:
         with:
           fetch-depth: 1
       - name: 🚀 Build and deploy
+        env:
+          HUGO_ARGS: '--minify' # Add your Hugo arguments here.
         uses: victoriadrake/hugo-remote@master
 ```
 
