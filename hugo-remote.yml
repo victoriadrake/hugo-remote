@@ -43,7 +43,7 @@ jobs:
             rm -rf ${DEST}/*
           fi
       - name: 🍳 Build site
-        run: hugo ${HUGO_ARGS}-d ${DEST}
+        run: hugo ${HUGO_ARGS:-""} -d ${DEST}
       - name: 🎁 Publish to remote repository
         env:
           TOKEN: ${{ secrets.TOKEN }}

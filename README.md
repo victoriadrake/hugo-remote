@@ -28,12 +28,13 @@ This action expects variables for:
 - `DEST`, the name of the destination directory you would like the site to build to,
 - `TOKEN`, in the form `${{ secrets.TOKEN }}` assuming `TOKEN` is the name you've used.
 
-You can optionally set an environment variable under 'Build and Deply'. `HUGO_ARGS`.
+See `env` in the below example for how to set these in your workflow YAML file.
 
-Example Arugments. See `man hugo` on your system for more options:
+You can optionally set an environment variable `HUGO_ARGS` under the "Build and deploy" step. This allows passing one or more arbitrary [options](https://gohugo.io/commands/hugo/#options) to the `hugo` build command. See `man hugo` on your system for options. Some examples include:
+
 - `HUGO_ARGS: '--minify'`
-- `HUGO_ARGS: '-D -F'`
-  
+- `HUGO_ARGS: '--enableGitInfo --ignoreCache'`
+
 Here is an example workflow file that uses this action on any `push` event to the `master` branch:
 
 ```yml
