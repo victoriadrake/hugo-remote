@@ -60,13 +60,13 @@ jobs:
         uses: actions/checkout@master
         with:
           fetch-depth: 1
+          # if your chosen Hugo theme is a submodule
+          submodules: true
       - name: 🚀 Build and deploy
         #env:
         #  HUGO_ARGS:
         uses: victoriadrake/hugo-remote@master
 ```
-
-If your chosen Hugo theme is a submodule, you may need to get it explicitly in your workflow. See [#1](https://github.com/victoriadrake/hugo-remote/issues/1) for more information and an example.
 
 See full instructions for [Configuring and managing workflows](https://help.github.com/en/actions/configuring-and-managing-workflows).
 
