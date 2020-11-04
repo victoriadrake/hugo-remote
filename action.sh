@@ -31,5 +31,9 @@ cd ${DEST}
 git config user.name "${GITHUB_ACTOR}"
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 git add .
+git status | grep "nothing to commit"
+if [ $? -eq 0 ]; then
+    exit 0
+fi
 git commit -am "🚀 Deploy with ${GITHUB_WORKFLOW}"
 git push -f -q https://${TOKEN}@github.com/${REMOTE} master
