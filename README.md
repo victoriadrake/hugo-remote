@@ -64,7 +64,7 @@ jobs:
           submodules: true
       - name: 🚀 Build and deploy
         #env:
-        #  HUGO_ARGS:
+        #  HUGO_ARGS: '--minify'
         uses: victoriadrake/hugo-remote@master
 ```
 
