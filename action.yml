@@ -4,6 +4,10 @@ author: 'victoriadrake'
 branding:
   icon: 'send'
   color: 'blue'
+inputs:
+  branch:
+    description: "The branch of your remote repository to deploy to. Defaults to 'master'"
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'

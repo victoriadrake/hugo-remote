@@ -68,6 +68,38 @@ jobs:
         uses: victoriadrake/hugo-remote@master
 ```
 
+You can customize branch names in your configuration. Here is an example workflow file that uses this action on any `push` event to the `master` branch and deploys to the remote repository's `main` branch:
+
+```yml
+name: hugo-remote
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  REMOTE: username/username.github.io.git
+  DEST: public
+  TOKEN: ${{ secrets.TOKEN }}
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🛎 Check out master
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+          # if your chosen Hugo theme is a submodule
+          submodules: true
+      - name: 🚀 Build and deploy
+        uses: victoriadrake/hugo-remote@master
+        with:
+          branch: main
+```
 See full instructions for [Configuring and managing workflows](https://help.github.com/en/actions/configuring-and-managing-workflows).
 
 ## Use the workflow YAML file directly
