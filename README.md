@@ -68,7 +68,7 @@ jobs:
         uses: victoriadrake/hugo-remote@master
 ```
 
-Here is an example workflow file that uses this action on any `push` event to the `main` branch:
+You can customize branch names in your configuration. Here is an example workflow file that uses this action on any `push` event to the `master` branch and deploys to the remote repository's `main` branch:
 
 ```yml
 name: hugo-remote
