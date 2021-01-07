@@ -3,6 +3,17 @@
 # Fail if variables are unset
 set -eu -o pipefail
 
+echo '🚧 Check for configuration file'
+if [ -f "./config.toml" ]; then
+    echo "Hugo TOML configuration file found."
+elif [ -f "./config.yaml" ]; then
+    echo "Hugo YAML configuration file found."
+elif [ -f "./config.json" ]; then
+    echo "Hugo JSON configuration file found."
+else
+    echo "🛑 No valid Hugo configuration file found. Stopping." && exit 1
+fi
+
 echo '🔧 Install tools'
 npm init -y && npm install -y postcss postcss-cli autoprefixer
 

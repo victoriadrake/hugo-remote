@@ -6,6 +6,8 @@ This action cleans and rebuilds your [Hugo site](https://gohugo.io/), and pushes
 
 It always uses the latest extended version from [Hugo releases](https://github.com/gohugoio/hugo/releases). The extended version [enables the processing](https://gohugo.io/troubleshooting/faq/#i-get-tocss--this-feature-is-not-available-in-your-current-hugo-version) of SCSS and Sass files to CSS.
 
+To save build time, the action first checks that you have a valid configuration file in the repository root. See documentation for Hugo's [Configuration File](https://gohugo.io/getting-started/configuration/#configuration-file).
+
 Your site will build in the `DEST` directory you specify (Hugo's usual default is `public`). The contents of this directory will then be pushed to `master` of your remote public repository.
 
 ## Use this in your workflow
@@ -63,8 +65,8 @@ jobs:
           # if your chosen Hugo theme is a submodule
           submodules: true
       - name: 🚀 Build and deploy
-        #env:
-        #  HUGO_ARGS: '--minify'
+        env:
+          HUGO_ARGS: '--minify --cleanDestinationDir'
         uses: victoriadrake/hugo-remote@master
 ```
 
@@ -100,10 +102,7 @@ jobs:
         with:
           branch: main
 ```
+
 See full instructions for [Configuring and managing workflows](https://help.github.com/en/actions/configuring-and-managing-workflows).
 
-## Use the workflow YAML file directly
-
-If you prefer to place this action's YAML file in your repository directly, simply copy the included `hugo-remote.yml` into your repository's `.github/workflows/` directory.
-
-For help editing the YAML file, see [Workflow syntax for GitHub Actions](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions).
+For workflow file syntax, see [Workflow syntax for GitHub Actions](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions).
