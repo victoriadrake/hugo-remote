@@ -38,11 +38,14 @@ echo '🍳 Build site'
 hugo ${HUGO_ARGS:-""} -d ${DEST}
 
 echo '🎁 Publish to remote repository'
+COMMIT_MESSAGE=${INPUT_COMMIT_MESSAGE}
+[ -z $COMMIT_MESSAGE ] && COMMIT_MESSAGE="🚀 Deploy with ${GITHUB_WORKFLOW}"
+
 cd ${DEST}
 git config user.name "${GITHUB_ACTOR}"
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 git add .
-git commit -am "🚀 Deploy with ${GITHUB_WORKFLOW}"
+git commit -am "$COMMIT_MESSAGE"
 
 CONTEXT=${INPUT_BRANCH-master}
 [ -z $CONTEXT ] && CONTEXT='master'
