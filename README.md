@@ -70,7 +70,7 @@ jobs:
         uses: victoriadrake/hugo-remote@master
 ```
 
-You can customize branch names in your configuration. Here is an example workflow file that uses this action on any `push` event to the `master` branch and deploys to the remote repository's `main` branch:
+You can customize branch names and commit messages in your configuration. Here is an example workflow file that uses this action on any `push` event to the `master` branch and deploys to the remote repository's `main` branch with a commit message `build prepared o7`:
 
 ```yml
 name: hugo-remote
@@ -101,6 +101,7 @@ jobs:
         uses: victoriadrake/hugo-remote@master
         with:
           branch: main
+          commit_message: build prepared o7
 ```
 
 See full instructions for [Configuring and managing workflows](https://help.github.com/en/actions/configuring-and-managing-workflows).
