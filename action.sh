@@ -37,6 +37,11 @@ fi
 echo '🍳 Build site'
 hugo ${HUGO_ARGS:-""} -d ${DEST}
 
+echo '📡 generate CNAME file'
+if ! [[ -z "${CUSTOM_DOMAIN}" ]]; then
+    echo "${CUSTOM_DOMAIN}" > ${DEST}/CNAME
+fi
+
 echo '🎁 Publish to remote repository'
 COMMIT_MESSAGE=${INPUT_COMMIT_MESSAGE}
 [ -z $COMMIT_MESSAGE ] && COMMIT_MESSAGE="🚀 Deploy with ${GITHUB_WORKFLOW}"
