@@ -38,7 +38,7 @@ echo '🍳 Build site'
 hugo ${HUGO_ARGS:-""} -d ${DEST}
 
 echo '📡 generate CNAME file'
-if ! [[ -z "${CUSTOM_DOMAIN}" ]]; then
+if ! [[ -n "${CUSTOM_DOMAIN:-}" ]]; then
     echo "${CUSTOM_DOMAIN}" > ${DEST}/CNAME
 fi
 
