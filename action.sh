@@ -38,8 +38,8 @@ echo '🍳 Build site'
 hugo ${HUGO_ARGS:-""} -d ${DEST}
 
 echo '📡 generate CNAME file'
-if ! [[ -n "${CUSTOM_DOMAIN:-}" ]]; then
-    echo "${CUSTOM_DOMAIN}" > ${DEST}/CNAME
+if [[ -n "${CUSTOM_DOMAIN:-}" && -n "${CUSTOM_DOMAIN}" ]]; then
+    echo "${CUSTOM_DOMAIN}" > "${DEST}/CNAME"
 fi
 
 echo '🎁 Publish to remote repository'
