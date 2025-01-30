@@ -10,6 +10,8 @@ elif [ -f "./config.yaml" ]; then
     echo "Hugo YAML configuration file found."
 elif [ -f "./config.json" ]; then
     echo "Hugo JSON configuration file found."
+elif [ -f "./hugo.toml" ]; then
+    echo "Hugo TOML configuration file found."
 else
     echo "🛑 No valid Hugo configuration file found. Stopping." && exit 1
 fi
