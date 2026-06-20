@@ -1,5 +1,5 @@
 # Container image that runs your code
-FROM node:lts
+FROM node:22
 
 RUN apt update && apt install -y \
     curl git jq
