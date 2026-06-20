@@ -21,8 +21,11 @@ npm init -y && npm install -y postcss postcss-cli autoprefixer
 
 echo '🤵 Install Hugo'
 HUGO_VERSION=$(curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest | jq -r '.tag_name')
+# Release tags look like "v0.163.0"; asset filenames drop the leading "v".
+# (Trimming a fixed number of characters breaks when the version length changes.)
+HUGO_VERSION_NUM=${HUGO_VERSION#v}
 mkdir tmp/ && cd tmp/
-curl -sSL https://github.com/gohugoio/hugo/releases/download/${HUGO_VERSION}/hugo_extended_${HUGO_VERSION: -7}_Linux-64bit.tar.gz | tar -xvzf-
+curl -sSL https://github.com/gohugoio/hugo/releases/download/${HUGO_VERSION}/hugo_extended_${HUGO_VERSION_NUM}_Linux-64bit.tar.gz | tar -xvzf-
 mv hugo /usr/local/bin/
 cd .. && rm -rf tmp/
 cd ${GITHUB_WORKSPACE}
